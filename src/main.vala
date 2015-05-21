@@ -4,7 +4,7 @@ int main ( string[] args )
 
 	var window = new Gtk.Window();
 	window.title = "Focus";
-	window.set_border_width(0);
+	window.set_border_width(12);
 	window.set_position(Gtk.WindowPosition.CENTER);
 	window.set_default_size(450, 80);
 	window.destroy.connect(Gtk.main_quit);
