@@ -7,8 +7,6 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include <string.h>
-#include <gdk/gdk.h>
-#include <stdio.h>
 
 
 #define TYPE_FOCUS_APP (focus_app_get_type ())
@@ -23,7 +21,6 @@ typedef struct _FocusAppClass FocusAppClass;
 typedef struct _FocusAppPrivate FocusAppPrivate;
 typedef struct _Block1Data Block1Data;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
-#define _g_error_free0(var) ((var == NULL) ? NULL : (var = (g_error_free (var), NULL)))
 #define _g_free0(var) (var = (g_free (var), NULL))
 
 struct _FocusApp {
@@ -38,9 +35,8 @@ struct _FocusAppClass {
 struct _Block1Data {
 	int _ref_count_;
 	FocusApp* self;
-	GtkBox* box;
 	GtkEntry* entry;
-	GtkLabel* _result_;
+	GtkListBox* listBox;
 };
 
 
@@ -56,6 +52,7 @@ static Block1Data* block1_data_ref (Block1Data* _data1_);
 static void block1_data_unref (void * _userdata_);
 static void _gtk_main_quit_gtk_widget_destroy (GtkWidget* _sender, gpointer self);
 static void __lambda4_ (Block1Data* _data1_);
+static GtkListBoxRow* focus_app_addTask (FocusApp* self, const gchar* task, gboolean working);
 static void ___lambda4__gtk_entry_activate (GtkEntry* _sender, gpointer self);
 gint _vala_main (gchar** args, int args_length1);
 
@@ -72,9 +69,8 @@ static void block1_data_unref (void * _userdata_) {
 	if (g_atomic_int_dec_and_test (&_data1_->_ref_count_)) {
 		FocusApp* self;
 		self = _data1_->self;
-		_g_object_unref0 (_data1_->_result_);
+		_g_object_unref0 (_data1_->listBox);
 		_g_object_unref0 (_data1_->entry);
-		_g_object_unref0 (_data1_->box);
 		_g_object_unref0 (self);
 		g_slice_free (Block1Data, _data1_);
 	}
@@ -86,22 +82,24 @@ static void _gtk_main_quit_gtk_widget_destroy (GtkWidget* _sender, gpointer self
 }
 
 
-static const gchar* string_to_string (const gchar* self) {
-	const gchar* result = NULL;
-	g_return_val_if_fail (self != NULL, NULL);
-	result = self;
-	return result;
-}
-
-
 static void __lambda4_ (Block1Data* _data1_) {
 	FocusApp* self;
+	gchar* _result_ = NULL;
 	const gchar* _tmp0_ = NULL;
+	gchar* _tmp1_ = NULL;
+	GtkListBoxRow* row = NULL;
+	GtkListBoxRow* _tmp2_ = NULL;
 	self = _data1_->self;
 	_tmp0_ = gtk_entry_get_text (_data1_->entry);
-	gtk_label_set_label (_data1_->_result_, _tmp0_);
+	_tmp1_ = g_strdup (_tmp0_);
+	_result_ = _tmp1_;
+	_tmp2_ = focus_app_addTask (self, _result_, TRUE);
+	row = _tmp2_;
+	gtk_list_box_prepend (_data1_->listBox, (GtkWidget*) row);
 	gtk_entry_set_text (_data1_->entry, "");
-	gtk_box_pack_start (_data1_->box, (GtkWidget*) _data1_->_result_, TRUE, TRUE, (guint) 0);
+	gtk_widget_show_all ((GtkWidget*) _data1_->listBox);
+	_g_object_unref0 (row);
+	_g_free0 (_result_);
 }
 
 
@@ -113,23 +111,13 @@ static void ___lambda4__gtk_entry_activate (GtkEntry* _sender, gpointer self) {
 FocusApp* focus_app_construct (GType object_type) {
 	FocusApp * self = NULL;
 	Block1Data* _data1_;
-	static const char LOCAL_DIR[] = "/usr/local/share/focus/";
 	GtkSettings* _tmp0_ = NULL;
-	gchar* css_file = NULL;
-	const gchar* _tmp1_ = NULL;
-	gchar* _tmp2_ = NULL;
-	GtkCssProvider* provider = NULL;
-	GtkCssProvider* _tmp3_ = NULL;
-	GtkBox* _tmp8_ = NULL;
+	GtkBox* box = NULL;
+	GtkBox* _tmp1_ = NULL;
 	GtkLabel* label = NULL;
-	GtkLabel* _tmp9_ = NULL;
-	GtkEntry* _tmp10_ = NULL;
-	GtkLabel* _tmp11_ = NULL;
-	GtkListBox* listBox = NULL;
-	GtkListBox* _tmp12_ = NULL;
-	GtkLabel* _tmp13_ = NULL;
-	GtkLabel* _tmp14_ = NULL;
-	GError * _inner_error_ = NULL;
+	GtkLabel* _tmp2_ = NULL;
+	GtkEntry* _tmp3_ = NULL;
+	GtkListBox* _tmp4_ = NULL;
 	_data1_ = g_slice_new0 (Block1Data);
 	_data1_->_ref_count_ = 1;
 	self = (FocusApp*) g_object_new (object_type, NULL);
@@ -141,78 +129,29 @@ FocusApp* focus_app_construct (GType object_type) {
 	gtk_window_set_position ((GtkWindow*) self, GTK_WIN_POS_CENTER);
 	gtk_window_set_default_size ((GtkWindow*) self, 500, 700);
 	g_signal_connect ((GtkWidget*) self, "destroy", (GCallback) _gtk_main_quit_gtk_widget_destroy, NULL);
-	_tmp1_ = string_to_string (LOCAL_DIR);
-	_tmp2_ = g_strconcat (_tmp1_, " app.css", NULL);
-	css_file = _tmp2_;
-	_tmp3_ = gtk_css_provider_new ();
-	provider = _tmp3_;
-	{
-		GdkScreen* _tmp4_ = NULL;
-		gtk_css_provider_load_from_path (provider, css_file, &_inner_error_);
-		if (G_UNLIKELY (_inner_error_ != NULL)) {
-			goto __catch0_g_error;
-		}
-		_tmp4_ = gdk_screen_get_default ();
-		gtk_style_context_add_provider_for_screen (_tmp4_, (GtkStyleProvider*) provider, (guint) GTK_STYLE_PROVIDER_PRIORITY_USER);
-	}
-	goto __finally0;
-	__catch0_g_error:
-	{
-		GError* e = NULL;
-		FILE* _tmp5_ = NULL;
-		GError* _tmp6_ = NULL;
-		const gchar* _tmp7_ = NULL;
-		e = _inner_error_;
-		_inner_error_ = NULL;
-		_tmp5_ = stderr;
-		_tmp6_ = e;
-		_tmp7_ = _tmp6_->message;
-		fprintf (_tmp5_, "Error: %s\n", _tmp7_);
-		_g_error_free0 (e);
-	}
-	__finally0:
-	if (G_UNLIKELY (_inner_error_ != NULL)) {
-		_g_object_unref0 (provider);
-		_g_free0 (css_file);
-		block1_data_unref (_data1_);
-		_data1_ = NULL;
-		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-		g_clear_error (&_inner_error_);
-		return NULL;
-	}
-	_tmp8_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
-	g_object_ref_sink (_tmp8_);
-	_data1_->box = _tmp8_;
-	gtk_container_add ((GtkContainer*) self, (GtkWidget*) _data1_->box);
-	_tmp9_ = (GtkLabel*) gtk_label_new ("<span size='17000'>Focus</span>");
-	g_object_ref_sink (_tmp9_);
-	label = _tmp9_;
+	_tmp1_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+	g_object_ref_sink (_tmp1_);
+	box = _tmp1_;
+	gtk_container_add ((GtkContainer*) self, (GtkWidget*) box);
+	_tmp2_ = (GtkLabel*) gtk_label_new ("<span size='17000'>Focus</span>");
+	g_object_ref_sink (_tmp2_);
+	label = _tmp2_;
 	gtk_label_set_use_markup (label, TRUE);
-	gtk_container_add ((GtkContainer*) _data1_->box, (GtkWidget*) label);
-	_tmp10_ = (GtkEntry*) gtk_entry_new ();
-	g_object_ref_sink (_tmp10_);
-	_data1_->entry = _tmp10_;
+	gtk_container_add ((GtkContainer*) box, (GtkWidget*) label);
+	_tmp3_ = (GtkEntry*) gtk_entry_new ();
+	g_object_ref_sink (_tmp3_);
+	_data1_->entry = _tmp3_;
 	gtk_entry_set_placeholder_text (_data1_->entry, "What are you doing?");
 	gtk_entry_set_icon_from_icon_name (_data1_->entry, GTK_ENTRY_ICON_SECONDARY, "media-playback-start");
 	gtk_widget_set_tooltip_text ((GtkWidget*) _data1_->entry, "Just Press Enter to insert!");
-	gtk_container_add ((GtkContainer*) _data1_->box, (GtkWidget*) _data1_->entry);
-	_tmp11_ = (GtkLabel*) gtk_label_new ("Results");
-	g_object_ref_sink (_tmp11_);
-	_data1_->_result_ = _tmp11_;
-	_tmp12_ = (GtkListBox*) gtk_list_box_new ();
-	g_object_ref_sink (_tmp12_);
-	listBox = _tmp12_;
+	gtk_container_add ((GtkContainer*) box, (GtkWidget*) _data1_->entry);
+	_tmp4_ = (GtkListBox*) gtk_list_box_new ();
+	g_object_ref_sink (_tmp4_);
+	_data1_->listBox = _tmp4_;
 	g_signal_connect_data (_data1_->entry, "activate", (GCallback) ___lambda4__gtk_entry_activate, block1_data_ref (_data1_), (GClosureNotify) block1_data_unref, 0);
-	_tmp13_ = (GtkLabel*) gtk_label_new ("Wow");
-	g_object_ref_sink (_tmp13_);
-	_tmp14_ = _tmp13_;
-	gtk_list_box_prepend (listBox, (GtkWidget*) _tmp14_);
-	_g_object_unref0 (_tmp14_);
-	gtk_box_pack_start (_data1_->box, (GtkWidget*) listBox, TRUE, TRUE, (guint) 0);
-	_g_object_unref0 (listBox);
+	gtk_box_pack_start (box, (GtkWidget*) _data1_->listBox, TRUE, TRUE, (guint) 0);
 	_g_object_unref0 (label);
-	_g_object_unref0 (provider);
-	_g_free0 (css_file);
+	_g_object_unref0 (box);
 	block1_data_unref (_data1_);
 	_data1_ = NULL;
 	return self;
@@ -221,6 +160,69 @@ FocusApp* focus_app_construct (GType object_type) {
 
 FocusApp* focus_app_new (void) {
 	return focus_app_construct (TYPE_FOCUS_APP);
+}
+
+
+/**
+     * addTask
+     * A method to add Task
+     *
+     */
+static GtkListBoxRow* focus_app_addTask (FocusApp* self, const gchar* task, gboolean working) {
+	GtkListBoxRow* result = NULL;
+	GtkListBoxRow* row = NULL;
+	GtkListBoxRow* _tmp0_ = NULL;
+	GtkBox* box = NULL;
+	GtkBox* _tmp1_ = NULL;
+	GtkBox* _tmp2_ = NULL;
+	const gchar* _tmp3_ = NULL;
+	GtkLabel* _tmp4_ = NULL;
+	GtkLabel* _tmp5_ = NULL;
+	gboolean _tmp6_ = FALSE;
+	GtkBox* _tmp10_ = NULL;
+	GtkButton* _tmp11_ = NULL;
+	GtkButton* _tmp12_ = NULL;
+	GtkListBoxRow* _tmp13_ = NULL;
+	GtkBox* _tmp14_ = NULL;
+	g_return_val_if_fail (self != NULL, NULL);
+	g_return_val_if_fail (task != NULL, NULL);
+	_tmp0_ = (GtkListBoxRow*) gtk_list_box_row_new ();
+	g_object_ref_sink (_tmp0_);
+	row = _tmp0_;
+	_tmp1_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+	g_object_ref_sink (_tmp1_);
+	box = _tmp1_;
+	_tmp2_ = box;
+	_tmp3_ = task;
+	_tmp4_ = (GtkLabel*) gtk_label_new (_tmp3_);
+	g_object_ref_sink (_tmp4_);
+	_tmp5_ = _tmp4_;
+	gtk_container_add ((GtkContainer*) _tmp2_, (GtkWidget*) _tmp5_);
+	_g_object_unref0 (_tmp5_);
+	_tmp6_ = working;
+	if (_tmp6_ != FALSE) {
+		GtkBox* _tmp7_ = NULL;
+		GtkLabel* _tmp8_ = NULL;
+		GtkLabel* _tmp9_ = NULL;
+		_tmp7_ = box;
+		_tmp8_ = (GtkLabel*) gtk_label_new ("Working on that");
+		g_object_ref_sink (_tmp8_);
+		_tmp9_ = _tmp8_;
+		gtk_box_pack_start (_tmp7_, (GtkWidget*) _tmp9_, TRUE, TRUE, (guint) 0);
+		_g_object_unref0 (_tmp9_);
+	}
+	_tmp10_ = box;
+	_tmp11_ = (GtkButton*) gtk_button_new_from_icon_name ("media-playback-pause", GTK_ICON_SIZE_BUTTON);
+	g_object_ref_sink (_tmp11_);
+	_tmp12_ = _tmp11_;
+	gtk_box_pack_start (_tmp10_, (GtkWidget*) _tmp12_, TRUE, TRUE, (guint) 0);
+	_g_object_unref0 (_tmp12_);
+	_tmp13_ = row;
+	_tmp14_ = box;
+	gtk_container_add ((GtkContainer*) _tmp13_, (GtkWidget*) _tmp14_);
+	result = row;
+	_g_object_unref0 (box);
+	return result;
 }
 
 

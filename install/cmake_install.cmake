@@ -1,4 +1,4 @@
-# Install script for directory: /home/pedrolucasp/Projetos/focus
+# Install script for directory: /home/pedrolucasp/Projetos/elementary/focus
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,10 +34,10 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/pedrolucasp/Projetos/focus/install/src/cmake_install.cmake")
-  INCLUDE("/home/pedrolucasp/Projetos/focus/install/data/local/cmake_install.cmake")
-  INCLUDE("/home/pedrolucasp/Projetos/focus/install/po/cmake_install.cmake")
-  INCLUDE("/home/pedrolucasp/Projetos/focus/install/data/cmake_install.cmake")
+  INCLUDE("/home/pedrolucasp/Projetos/elementary/focus/install/src/cmake_install.cmake")
+  INCLUDE("/home/pedrolucasp/Projetos/elementary/focus/install/data/local/cmake_install.cmake")
+  INCLUDE("/home/pedrolucasp/Projetos/elementary/focus/install/po/cmake_install.cmake")
+  INCLUDE("/home/pedrolucasp/Projetos/elementary/focus/install/data/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -47,7 +47,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/pedrolucasp/Projetos/focus/install/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/pedrolucasp/Projetos/elementary/focus/install/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/pedrolucasp/Projetos/focus/install/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/pedrolucasp/Projetos/elementary/focus/install/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

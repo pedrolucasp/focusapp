@@ -1,1 +1,1 @@
-/usr/bin/cc      CMakeFiles/focus.dir/Config.c.o CMakeFiles/focus.dir/Focus.c.o CMakeFiles/focus.dir/focus.c.o  -o focus -rdynamic -lgtk-3 -lgdk-3 -latk-1.0 -lgio-2.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lX11 
+/usr/bin/cc      CMakeFiles/focus.dir/Config.c.o CMakeFiles/focus.dir/Focus.c.o  -o focus -rdynamic -lgtk-3 -lgdk-3 -latk-1.0 -lgio-2.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lcairo -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lX11 

@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/focus
+CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/elementary/focus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/focus/install
+CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/elementary/focus/install
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,16 +79,6 @@ install/local: preinstall
 install/local/fast: install/local
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-.PHONY : install/strip/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -120,9 +110,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/focus/install/CMakeFiles /home/pedrolucasp/Projetos/focus/install/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/focus/install/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -162,6 +152,11 @@ focus/fast:
 	$(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/build
 .PHONY : focus/fast
 
+# Manual pre-install relink rule for target.
+focus/preinstall:
+	$(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/preinstall
+.PHONY : focus/preinstall
+
 #=============================================================================
 # Target rules for targets named i18n
 
@@ -197,7 +192,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
-	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"

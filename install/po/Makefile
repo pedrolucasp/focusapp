@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/focus
+CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/elementary/focus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/focus/install
+CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/elementary/focus/install
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,16 +79,6 @@ install/local: preinstall
 install/local/fast: install/local
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-.PHONY : install/strip/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -120,14 +110,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/pedrolucasp/Projetos/focus/install && $(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/focus/install/CMakeFiles /home/pedrolucasp/Projetos/focus/install/po/CMakeFiles/progress.marks
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/focus/install/CMakeFiles 0
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles /home/pedrolucasp/Projetos/elementary/focus/install/po/CMakeFiles/progress.marks
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/clean
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/clean
 .PHONY : clean
 
 # The main clean target
@@ -136,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/preinstall
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/preinstall
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pedrolucasp/Projetos/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 po/CMakeFiles/i18n.dir/rule:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/CMakeFiles/i18n.dir/rule
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/CMakeFiles/i18n.dir/rule
 .PHONY : po/CMakeFiles/i18n.dir/rule
 
 # Convenience name for target.
@@ -160,12 +150,12 @@ i18n: po/CMakeFiles/i18n.dir/rule
 
 # fast build rule for target.
 i18n/fast:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f po/CMakeFiles/i18n.dir/build.make po/CMakeFiles/i18n.dir/build
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f po/CMakeFiles/i18n.dir/build.make po/CMakeFiles/i18n.dir/build
 .PHONY : i18n/fast
 
 # Convenience name for target.
 po/CMakeFiles/pot.dir/rule:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/CMakeFiles/pot.dir/rule
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 po/CMakeFiles/pot.dir/rule
 .PHONY : po/CMakeFiles/pot.dir/rule
 
 # Convenience name for target.
@@ -174,7 +164,7 @@ pot: po/CMakeFiles/pot.dir/rule
 
 # fast build rule for target.
 pot/fast:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f po/CMakeFiles/pot.dir/build.make po/CMakeFiles/pot.dir/build
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f po/CMakeFiles/pot.dir/build.make po/CMakeFiles/pot.dir/build
 .PHONY : pot/fast
 
 # Help Target
@@ -187,7 +177,6 @@ help:
 	@echo "... i18n"
 	@echo "... install"
 	@echo "... install/local"
-	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... pot"
 	@echo "... rebuild_cache"
@@ -203,6 +192,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pedrolucasp/Projetos/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

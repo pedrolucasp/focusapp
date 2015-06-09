@@ -1,4 +1,4 @@
-# Install script for directory: /home/pedrolucasp/Projetos/focus/po
+# Install script for directory: /home/pedrolucasp/Projetos/elementary/focus/po
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

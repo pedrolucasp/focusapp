@@ -5,5 +5,3 @@ src/CMakeFiles/focus.dir/Config.c.o: src/Config.c
 
 src/CMakeFiles/focus.dir/Focus.c.o: src/Focus.c
 
-src/CMakeFiles/focus.dir/focus.c.o: src/focus.c
-

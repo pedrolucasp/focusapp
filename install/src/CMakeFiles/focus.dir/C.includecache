@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pedrolucasp/Projetos/focus/install/src/Focus.c
+/home/pedrolucasp/Projetos/elementary/focus/install/src/Focus.c
 glib.h
 -
 glib-object.h
@@ -16,9 +16,5 @@ gtk/gtk.h
 stdlib.h
 -
 string.h
--
-gdk/gdk.h
--
-stdio.h
 -
 

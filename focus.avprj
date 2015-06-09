@@ -16,7 +16,6 @@ project_name: focus
 *vala_check_package: pango
 *vala_check_package: x11
 *vala_source: Focus.vala
-*vala_source: focus.vala
 
 *po: po
 

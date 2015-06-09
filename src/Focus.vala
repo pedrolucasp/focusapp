@@ -34,22 +34,48 @@ public class FocusApp : Gtk.Window
         // SourceList demo
         // box.add(pane);
 
-        var result = new Label("Results");
-
-        // Here it comes all the fuck
+        // var result = new Label("Results");
         var listBox = new ListBox();
 
         entry.activate.connect (() => {
-            result.label = entry.get_text();
+            var result = entry.get_text();
+
+            var row = addTask(result, true);
+
+            listBox.prepend(row);
+
             entry.set_text("");
-            box.pack_start(result);
+            listBox.show_all();
         });
 
-        listBox.prepend(new Label("Wow"));
         box.pack_start(listBox);
 
 
     }
+
+    /**
+     * addTask
+     * A method to add Task
+     *
+     */ 
+    ListBoxRow addTask(string task, bool working = true){
+        var row = new ListBoxRow();
+        // Create a horizontal box with some spacing
+        var box = new Box(Gtk.Orientation.HORIZONTAL, 10);
+
+        box.add(new Label(task));
+
+        if(working != false){
+            box.pack_start(new Label("Working on that"), true);
+        }
+
+        box.pack_start(new Button.from_icon_name("media-playback-pause"), true);
+
+        row.add(box);
+
+        return row;
+    }
+
 }
 
 static int main(string[] args) {

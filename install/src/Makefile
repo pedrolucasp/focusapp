@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/focus
+CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/elementary/focus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/focus/install
+CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/elementary/focus/install
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,16 +79,6 @@ install/local: preinstall
 install/local/fast: install/local
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-.PHONY : install/strip/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -120,14 +110,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/pedrolucasp/Projetos/focus/install && $(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/focus/install/CMakeFiles /home/pedrolucasp/Projetos/focus/install/src/CMakeFiles/progress.marks
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/focus/install/CMakeFiles 0
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles /home/pedrolucasp/Projetos/elementary/focus/install/src/CMakeFiles/progress.marks
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -136,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/pedrolucasp/Projetos/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/focus.dir/rule:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/focus.dir/rule
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/focus.dir/rule
 .PHONY : src/CMakeFiles/focus.dir/rule
 
 # Convenience name for target.
@@ -160,15 +150,20 @@ focus: src/CMakeFiles/focus.dir/rule
 
 # fast build rule for target.
 focus/fast:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/build
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/build
 .PHONY : focus/fast
+
+# Manual pre-install relink rule for target.
+focus/preinstall:
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/focus.dir/preinstall
+.PHONY : focus/preinstall
 
 Config.o: Config.c.o
 .PHONY : Config.o
 
 # target to build an object file
 Config.c.o:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.o
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.o
 .PHONY : Config.c.o
 
 Config.i: Config.c.i
@@ -176,7 +171,7 @@ Config.i: Config.c.i
 
 # target to preprocess a source file
 Config.c.i:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.i
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.i
 .PHONY : Config.c.i
 
 Config.s: Config.c.s
@@ -184,7 +179,7 @@ Config.s: Config.c.s
 
 # target to generate assembly for a file
 Config.c.s:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.s
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.s
 .PHONY : Config.c.s
 
 Focus.o: Focus.c.o
@@ -192,7 +187,7 @@ Focus.o: Focus.c.o
 
 # target to build an object file
 Focus.c.o:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.o
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.o
 .PHONY : Focus.c.o
 
 Focus.i: Focus.c.i
@@ -200,7 +195,7 @@ Focus.i: Focus.c.i
 
 # target to preprocess a source file
 Focus.c.i:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.i
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.i
 .PHONY : Focus.c.i
 
 Focus.s: Focus.c.s
@@ -208,32 +203,8 @@ Focus.s: Focus.c.s
 
 # target to generate assembly for a file
 Focus.c.s:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.s
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.s
 .PHONY : Focus.c.s
-
-focus.o: focus.c.o
-.PHONY : focus.o
-
-# target to build an object file
-focus.c.o:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/focus.c.o
-.PHONY : focus.c.o
-
-focus.i: focus.c.i
-.PHONY : focus.i
-
-# target to preprocess a source file
-focus.c.i:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/focus.c.i
-.PHONY : focus.c.i
-
-focus.s: focus.c.s
-.PHONY : focus.s
-
-# target to generate assembly for a file
-focus.c.s:
-	cd /home/pedrolucasp/Projetos/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/focus.c.s
-.PHONY : focus.c.s
 
 # Help Target
 help:
@@ -245,7 +216,6 @@ help:
 	@echo "... focus"
 	@echo "... install"
 	@echo "... install/local"
-	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
@@ -255,9 +225,6 @@ help:
 	@echo "... Focus.o"
 	@echo "... Focus.i"
 	@echo "... Focus.s"
-	@echo "... focus.o"
-	@echo "... focus.i"
-	@echo "... focus.s"
 .PHONY : help
 
 
@@ -269,6 +236,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/pedrolucasp/Projetos/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
