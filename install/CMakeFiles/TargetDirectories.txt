@@ -1,0 +1,3 @@
+/home/pedrolucasp/Projetos/focus/install/src/CMakeFiles/focus.dir
+/home/pedrolucasp/Projetos/focus/install/po/CMakeFiles/i18n.dir
+/home/pedrolucasp/Projetos/focus/install/po/CMakeFiles/pot.dir

@@ -1,0 +1,4 @@
+/usr/local/bin/focus
+/usr/local/share/focus/CMakeLists.txt
+/usr/local/share/focus/app.css
+/usr/local/share/applications/focus.desktop

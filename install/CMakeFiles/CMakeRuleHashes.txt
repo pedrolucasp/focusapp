@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+972964dc41ec16bd15223aff738ec3ca po/CMakeFiles/i18n
+972964dc41ec16bd15223aff738ec3ca po/CMakeFiles/pot
+7eea79cad7712e1e6019670a1cbf34fc src/Config.c
+f15d2085bba78c2789033af387938792 src/focus_valac.stamp

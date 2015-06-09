@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pedrolucasp/Projetos/focus/install/src/Focus.c
+glib.h
+-
+glib-object.h
+-
+gtk/gtk.h
+-
+stdlib.h
+-
+string.h
+-
+gdk/gdk.h
+-
+stdio.h
+-
+
