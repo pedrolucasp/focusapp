@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/elementary/focus
+CMAKE_SOURCE_DIR = /home/pedrolucasp/Documentos/Projetos/elementary/focus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/elementary/focus/install
+CMAKE_BINARY_DIR = /home/pedrolucasp/Documentos/Projetos/elementary/focus/install
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/focus.dir/depend.make
@@ -53,26 +53,29 @@ src/Config.c: src/focus_valac.stamp
 
 src/Focus.c: src/Config.c
 
+src/TaskManager.c: src/Config.c
+
 src/focus_valac.stamp: src/Config.vala
 src/focus_valac.stamp: ../src/Focus.vala
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating /home/pedrolucasp/Projetos/elementary/focus/install/src/Config.c;Focus.c"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && valac-0.28 -C -b /home/pedrolucasp/Projetos/elementary/focus/src -d /home/pedrolucasp/Projetos/elementary/focus/install/src --pkg=atk --pkg=cairo --pkg=gdk-3.0 --pkg=gdk-pixbuf-2.0 --pkg=gio-2.0 --pkg=glib-2.0 --pkg=gobject-2.0 --pkg=gtk+-3.0 --pkg=pango --pkg=x11 /home/pedrolucasp/Projetos/elementary/focus/install/src/Config.vala /home/pedrolucasp/Projetos/elementary/focus/src/Focus.vala
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && touch /home/pedrolucasp/Projetos/elementary/focus/install/src/focus_valac.stamp
+src/focus_valac.stamp: ../src/TaskManager.vala
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Config.c;Focus.c;TaskManager.c"
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && valac-0.28 -C -b /home/pedrolucasp/Documentos/Projetos/elementary/focus/src -d /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src --pkg=atk --pkg=cairo --pkg=gdk-3.0 --pkg=gdk-pixbuf-2.0 --pkg=gio-2.0 --pkg=glib-2.0 --pkg=gobject-2.0 --pkg=gtk+-3.0 --pkg=pango --pkg=x11 /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Config.vala /home/pedrolucasp/Documentos/Projetos/elementary/focus/src/Focus.vala /home/pedrolucasp/Documentos/Projetos/elementary/focus/src/TaskManager.vala
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && touch /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/focus_valac.stamp
 
 src/CMakeFiles/focus.dir/Config.c.o: src/CMakeFiles/focus.dir/flags.make
 src/CMakeFiles/focus.dir/Config.c.o: src/Config.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/CMakeFiles/focus.dir/Config.c.o"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/focus.dir/Config.c.o   -c /home/pedrolucasp/Projetos/elementary/focus/install/src/Config.c
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/focus.dir/Config.c.o   -c /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Config.c
 
 src/CMakeFiles/focus.dir/Config.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/focus.dir/Config.c.i"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/pedrolucasp/Projetos/elementary/focus/install/src/Config.c > CMakeFiles/focus.dir/Config.c.i
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Config.c > CMakeFiles/focus.dir/Config.c.i
 
 src/CMakeFiles/focus.dir/Config.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/focus.dir/Config.c.s"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/pedrolucasp/Projetos/elementary/focus/install/src/Config.c -o CMakeFiles/focus.dir/Config.c.s
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Config.c -o CMakeFiles/focus.dir/Config.c.s
 
 src/CMakeFiles/focus.dir/Config.c.o.requires:
 .PHONY : src/CMakeFiles/focus.dir/Config.c.o.requires
@@ -85,17 +88,17 @@ src/CMakeFiles/focus.dir/Config.c.o.provides.build: src/CMakeFiles/focus.dir/Con
 
 src/CMakeFiles/focus.dir/Focus.c.o: src/CMakeFiles/focus.dir/flags.make
 src/CMakeFiles/focus.dir/Focus.c.o: src/Focus.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/CMakeFiles/focus.dir/Focus.c.o"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/focus.dir/Focus.c.o   -c /home/pedrolucasp/Projetos/elementary/focus/install/src/Focus.c
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/focus.dir/Focus.c.o   -c /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Focus.c
 
 src/CMakeFiles/focus.dir/Focus.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/focus.dir/Focus.c.i"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/pedrolucasp/Projetos/elementary/focus/install/src/Focus.c > CMakeFiles/focus.dir/Focus.c.i
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Focus.c > CMakeFiles/focus.dir/Focus.c.i
 
 src/CMakeFiles/focus.dir/Focus.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/focus.dir/Focus.c.s"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/pedrolucasp/Projetos/elementary/focus/install/src/Focus.c -o CMakeFiles/focus.dir/Focus.c.s
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Focus.c -o CMakeFiles/focus.dir/Focus.c.s
 
 src/CMakeFiles/focus.dir/Focus.c.o.requires:
 .PHONY : src/CMakeFiles/focus.dir/Focus.c.o.requires
@@ -106,20 +109,45 @@ src/CMakeFiles/focus.dir/Focus.c.o.provides: src/CMakeFiles/focus.dir/Focus.c.o.
 
 src/CMakeFiles/focus.dir/Focus.c.o.provides.build: src/CMakeFiles/focus.dir/Focus.c.o
 
+src/CMakeFiles/focus.dir/TaskManager.c.o: src/CMakeFiles/focus.dir/flags.make
+src/CMakeFiles/focus.dir/TaskManager.c.o: src/TaskManager.c
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object src/CMakeFiles/focus.dir/TaskManager.c.o"
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/focus.dir/TaskManager.c.o   -c /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/TaskManager.c
+
+src/CMakeFiles/focus.dir/TaskManager.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/focus.dir/TaskManager.c.i"
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -E /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/TaskManager.c > CMakeFiles/focus.dir/TaskManager.c.i
+
+src/CMakeFiles/focus.dir/TaskManager.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/focus.dir/TaskManager.c.s"
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && /usr/bin/cc  $(C_DEFINES) $(C_FLAGS) -S /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/TaskManager.c -o CMakeFiles/focus.dir/TaskManager.c.s
+
+src/CMakeFiles/focus.dir/TaskManager.c.o.requires:
+.PHONY : src/CMakeFiles/focus.dir/TaskManager.c.o.requires
+
+src/CMakeFiles/focus.dir/TaskManager.c.o.provides: src/CMakeFiles/focus.dir/TaskManager.c.o.requires
+	$(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/TaskManager.c.o.provides.build
+.PHONY : src/CMakeFiles/focus.dir/TaskManager.c.o.provides
+
+src/CMakeFiles/focus.dir/TaskManager.c.o.provides.build: src/CMakeFiles/focus.dir/TaskManager.c.o
+
 # Object files for target focus
 focus_OBJECTS = \
 "CMakeFiles/focus.dir/Config.c.o" \
-"CMakeFiles/focus.dir/Focus.c.o"
+"CMakeFiles/focus.dir/Focus.c.o" \
+"CMakeFiles/focus.dir/TaskManager.c.o"
 
 # External object files for target focus
 focus_EXTERNAL_OBJECTS =
 
 src/focus: src/CMakeFiles/focus.dir/Config.c.o
 src/focus: src/CMakeFiles/focus.dir/Focus.c.o
+src/focus: src/CMakeFiles/focus.dir/TaskManager.c.o
 src/focus: src/CMakeFiles/focus.dir/build.make
 src/focus: src/CMakeFiles/focus.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable focus"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/focus.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/focus.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/focus.dir/build: src/focus
@@ -128,17 +156,19 @@ src/CMakeFiles/focus.dir/build: src/focus
 # Object files for target focus
 focus_OBJECTS = \
 "CMakeFiles/focus.dir/Config.c.o" \
-"CMakeFiles/focus.dir/Focus.c.o"
+"CMakeFiles/focus.dir/Focus.c.o" \
+"CMakeFiles/focus.dir/TaskManager.c.o"
 
 # External object files for target focus
 focus_EXTERNAL_OBJECTS =
 
 src/CMakeFiles/CMakeRelink.dir/focus: src/CMakeFiles/focus.dir/Config.c.o
 src/CMakeFiles/CMakeRelink.dir/focus: src/CMakeFiles/focus.dir/Focus.c.o
+src/CMakeFiles/CMakeRelink.dir/focus: src/CMakeFiles/focus.dir/TaskManager.c.o
 src/CMakeFiles/CMakeRelink.dir/focus: src/CMakeFiles/focus.dir/build.make
 src/CMakeFiles/CMakeRelink.dir/focus: src/CMakeFiles/focus.dir/relink.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking C executable CMakeFiles/CMakeRelink.dir/focus"
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/focus.dir/relink.txt --verbose=$(VERBOSE)
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/focus.dir/relink.txt --verbose=$(VERBOSE)
 
 # Rule to relink during preinstall.
 src/CMakeFiles/focus.dir/preinstall: src/CMakeFiles/CMakeRelink.dir/focus
@@ -146,15 +176,17 @@ src/CMakeFiles/focus.dir/preinstall: src/CMakeFiles/CMakeRelink.dir/focus
 
 src/CMakeFiles/focus.dir/requires: src/CMakeFiles/focus.dir/Config.c.o.requires
 src/CMakeFiles/focus.dir/requires: src/CMakeFiles/focus.dir/Focus.c.o.requires
+src/CMakeFiles/focus.dir/requires: src/CMakeFiles/focus.dir/TaskManager.c.o.requires
 .PHONY : src/CMakeFiles/focus.dir/requires
 
 src/CMakeFiles/focus.dir/clean:
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/src && $(CMAKE_COMMAND) -P CMakeFiles/focus.dir/cmake_clean.cmake
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src && $(CMAKE_COMMAND) -P CMakeFiles/focus.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/focus.dir/clean
 
 src/CMakeFiles/focus.dir/depend: src/Config.c
 src/CMakeFiles/focus.dir/depend: src/Focus.c
+src/CMakeFiles/focus.dir/depend: src/TaskManager.c
 src/CMakeFiles/focus.dir/depend: src/focus_valac.stamp
-	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedrolucasp/Projetos/elementary/focus /home/pedrolucasp/Projetos/elementary/focus/src /home/pedrolucasp/Projetos/elementary/focus/install /home/pedrolucasp/Projetos/elementary/focus/install/src /home/pedrolucasp/Projetos/elementary/focus/install/src/CMakeFiles/focus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedrolucasp/Documentos/Projetos/elementary/focus /home/pedrolucasp/Documentos/Projetos/elementary/focus/src /home/pedrolucasp/Documentos/Projetos/elementary/focus/install /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/CMakeFiles/focus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/focus.dir/depend
 

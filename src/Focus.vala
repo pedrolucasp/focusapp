@@ -29,6 +29,15 @@ public class FocusApp : Gtk.Window
         entry.set_icon_from_icon_name(Gtk.EntryIconPosition.SECONDARY, "media-playback-start");
         // Our tooltip
         entry.set_tooltip_text("Just Press Enter to insert!");
+        // Our margins
+        entry.set_margin_top(20);
+        entry.set_margin_start(20);
+        entry.set_margin_end(20);
+        entry.set_margin_bottom(10);
+        // entry.set_vexpand(true);
+        entry.set_name("entry");
+        // Add to box
+
         box.add(entry);
 
         // SourceList demo
@@ -66,10 +75,56 @@ public class FocusApp : Gtk.Window
         box.add(new Label(task));
 
         if(working != false){
-            box.pack_start(new Label("Working on that"), true);
+
+            // TaskManager taskManager = new TaskManager();
+
+            // task.startTask();
+
+            // var date = taskManager.countTime();
+            // date.format("%T")
+            var label = new Label("");
+
+            var now = new DateTime.now_local();
+
+            var action = new Button.from_icon_name("media-playback-pause");
+
+            GLib.Timeout.add(500, () => {
+
+                // Create a placeholder DateTime, copying the year, month and day from our real time
+                var latest_time = new DateTime.local(now.get_year(), now.get_month(), now.get_day_of_month(), 0, 0, 0.0);
+
+                // Create an new Date and gets the seconds of diference between them
+                var updated = new DateTime.now_local().difference(now);
+                // Add to our result
+                var latest = latest_time.add(updated);
+                // Set the Text of Label
+                label.set_text(latest.format("%T"));
+                // This will make the thread go all the time, until reach stops
+                // var self = this;
+                var flag = false;
+
+                action.clicked.connect (() => {
+                    // Emitted when the button has been activated:
+                    // self.loop_quit();
+                    // Attempt to create a flag to stop the timeout
+                    flag = true;
+
+                });
+
+                if (flag)
+                    return false;
+                else
+                    return true;
+
+            });
+
+            box.pack_start(label, true);
+            box.pack_end(action, true);
+
         }
 
-        box.pack_start(new Button.from_icon_name("media-playback-pause"), true);
+
+        box.set_homogeneous(true);
 
         row.add(box);
 

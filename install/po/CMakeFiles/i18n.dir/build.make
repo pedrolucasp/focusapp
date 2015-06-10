@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/elementary/focus
+CMAKE_SOURCE_DIR = /home/pedrolucasp/Documentos/Projetos/elementary/focus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/elementary/focus/install
+CMAKE_BINARY_DIR = /home/pedrolucasp/Documentos/Projetos/elementary/focus/install
 
 # Utility rule file for i18n.
 
@@ -46,7 +46,7 @@ CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/elementary/focus/install
 include po/CMakeFiles/i18n.dir/progress.make
 
 po/CMakeFiles/i18n:
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold messages.”
 
 i18n: po/CMakeFiles/i18n
@@ -58,10 +58,10 @@ po/CMakeFiles/i18n.dir/build: i18n
 .PHONY : po/CMakeFiles/i18n.dir/build
 
 po/CMakeFiles/i18n.dir/clean:
-	cd /home/pedrolucasp/Projetos/elementary/focus/install/po && $(CMAKE_COMMAND) -P CMakeFiles/i18n.dir/cmake_clean.cmake
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/po && $(CMAKE_COMMAND) -P CMakeFiles/i18n.dir/cmake_clean.cmake
 .PHONY : po/CMakeFiles/i18n.dir/clean
 
 po/CMakeFiles/i18n.dir/depend:
-	cd /home/pedrolucasp/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedrolucasp/Projetos/elementary/focus /home/pedrolucasp/Projetos/elementary/focus/po /home/pedrolucasp/Projetos/elementary/focus/install /home/pedrolucasp/Projetos/elementary/focus/install/po /home/pedrolucasp/Projetos/elementary/focus/install/po/CMakeFiles/i18n.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedrolucasp/Documentos/Projetos/elementary/focus /home/pedrolucasp/Documentos/Projetos/elementary/focus/po /home/pedrolucasp/Documentos/Projetos/elementary/focus/install /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/po /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/po/CMakeFiles/i18n.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : po/CMakeFiles/i18n.dir/depend
 

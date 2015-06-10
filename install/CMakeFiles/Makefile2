@@ -47,10 +47,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedrolucasp/Projetos/elementary/focus
+CMAKE_SOURCE_DIR = /home/pedrolucasp/Documentos/Projetos/elementary/focus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedrolucasp/Projetos/elementary/focus/install
+CMAKE_BINARY_DIR = /home/pedrolucasp/Documentos/Projetos/elementary/focus/install
 
 #=============================================================================
 # Directory level rules for directory src
@@ -74,7 +74,7 @@ src/preinstall: src/CMakeFiles/focus.dir/preinstall
 src/CMakeFiles/focus.dir/all:
 	$(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/depend
 	$(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles  1 2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles  1 2 3 4
 	@echo "Built target focus"
 .PHONY : src/CMakeFiles/focus.dir/all
 
@@ -84,9 +84,9 @@ all: src/CMakeFiles/focus.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/focus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/focus.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles 0
 .PHONY : src/CMakeFiles/focus.dir/rule
 
 # Convenience name for target.
@@ -149,7 +149,7 @@ po/preinstall:
 po/CMakeFiles/i18n.dir/all:
 	$(MAKE) -f po/CMakeFiles/i18n.dir/build.make po/CMakeFiles/i18n.dir/depend
 	$(MAKE) -f po/CMakeFiles/i18n.dir/build.make po/CMakeFiles/i18n.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles  5
 	@echo "Built target i18n"
 .PHONY : po/CMakeFiles/i18n.dir/all
 
@@ -159,9 +159,9 @@ all: po/CMakeFiles/i18n.dir/all
 
 # Build rule for subdir invocation for target.
 po/CMakeFiles/i18n.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 po/CMakeFiles/i18n.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles 0
 .PHONY : po/CMakeFiles/i18n.dir/rule
 
 # Convenience name for target.
@@ -184,15 +184,15 @@ clean: po/CMakeFiles/i18n.dir/clean
 po/CMakeFiles/pot.dir/all:
 	$(MAKE) -f po/CMakeFiles/pot.dir/build.make po/CMakeFiles/pot.dir/depend
 	$(MAKE) -f po/CMakeFiles/pot.dir/build.make po/CMakeFiles/pot.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles  5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles  6
 	@echo "Built target pot"
 .PHONY : po/CMakeFiles/pot.dir/all
 
 # Build rule for subdir invocation for target.
 po/CMakeFiles/pot.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 po/CMakeFiles/pot.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Projetos/elementary/focus/install/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/CMakeFiles 0
 .PHONY : po/CMakeFiles/pot.dir/rule
 
 # Convenience name for target.

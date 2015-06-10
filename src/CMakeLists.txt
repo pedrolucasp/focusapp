@@ -35,6 +35,7 @@ set (VALA_PACKAGES ${VALA_PACKAGES} x11)
 
 set (APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/Config.vala)
 set (APP_SOURCES ${APP_SOURCES} Focus.vala)
+set (APP_SOURCES ${APP_SOURCES} TaskManager.vala)
 
 vala_precompile(VALA_C focus
 	${APP_SOURCES}

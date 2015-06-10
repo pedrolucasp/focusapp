@@ -5,6 +5,6 @@ namespace Constants {
 	public const string RELEASE_NAME = "focus";
 	public const string VERSION = "1.0.0";
 #if UNITEST
-	public const string TESTSRCDIR = "/home/pedrolucasp/Projetos/elementary/focus";
+	public const string TESTSRCDIR = "/home/pedrolucasp/Documentos/Projetos/elementary/focus";
 #endif
 }

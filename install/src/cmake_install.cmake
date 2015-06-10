@@ -1,4 +1,4 @@
-# Install script for directory: /home/pedrolucasp/Projetos/elementary/focus/src
+# Install script for directory: /home/pedrolucasp/Documentos/Projetos/elementary/focus/src
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,6 +33,6 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/pedrolucasp/Projetos/elementary/focus/install/src/CMakeFiles/CMakeRelink.dir/focus")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/CMakeFiles/CMakeRelink.dir/focus")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 

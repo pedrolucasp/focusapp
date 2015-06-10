@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pedrolucasp/Projetos/elementary/focus/install/src/Focus.c
+/home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Focus.c
 glib.h
 -
 glib-object.h
