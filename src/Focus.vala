@@ -1,7 +1,12 @@
 using Gtk;
+// using Granite;
+
+public CssProvider custom_css;
 
 public class FocusApp : Gtk.Window
 {
+
+
 
     public FocusApp() 
     {
@@ -13,12 +18,13 @@ public class FocusApp : Gtk.Window
 
         this.set_default_size (500, 700);
         this.destroy.connect (Gtk.main_quit);
-
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 10);
         this.add(box);
 
-        var label = new Gtk.Label ("<span size='17000'>Focus</span>");
-        label.set_use_markup(true);
+        var label = new Gtk.Label("Focus");
+        label.get_style_context().add_class ("h1");
+        label.get_style_context().add_class ("b");
+
         box.add (label);
 
         // Our insert
@@ -72,9 +78,10 @@ public class FocusApp : Gtk.Window
         // Create a horizontal box with some spacing
         var box = new Box(Gtk.Orientation.HORIZONTAL, 10);
 
-        box.add(new Label(task));
+        var userTask = new Gtk.Label ("<b>" + task + "</b>");
+        userTask.set_use_markup(true);
+        box.add(userTask);
 
-        if(working != false){
 
             // TaskManager taskManager = new TaskManager();
 
@@ -86,7 +93,19 @@ public class FocusApp : Gtk.Window
 
             var now = new DateTime.now_local();
 
+
             var action = new Button.from_icon_name("media-playback-pause");
+
+
+            action.clicked.connect (() => {
+                // Emitted when the button has been activated:
+                // self.loop_quit();
+                // Attempt to create a flag to stop the timeout
+                working = !working;
+                // print("I was clicked");
+
+            });
+
 
             GLib.Timeout.add(500, () => {
 
@@ -101,32 +120,29 @@ public class FocusApp : Gtk.Window
                 label.set_text(latest.format("%T"));
                 // This will make the thread go all the time, until reach stops
                 // var self = this;
-                var flag = false;
+                // var flag = true;
 
-                action.clicked.connect (() => {
-                    // Emitted when the button has been activated:
-                    // self.loop_quit();
-                    // Attempt to create a flag to stop the timeout
-                    flag = true;
-
-                });
-
-                if (flag)
-                    return false;
-                else
+                if(working != false){
                     return true;
+                } else {
+                    return false;
+                }
+
 
             });
 
-            box.pack_start(label, true);
             box.pack_end(action, true);
 
-        }
+            box.pack_start(label, true);
+
+        // }
 
 
         box.set_homogeneous(true);
 
         row.add(box);
+
+        row.set_margin_bottom(10);
 
         return row;
     }

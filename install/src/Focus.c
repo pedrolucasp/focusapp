@@ -24,7 +24,6 @@ typedef struct _Block1Data Block1Data;
 #define _g_free0(var) (var = (g_free (var), NULL))
 typedef struct _Block2Data Block2Data;
 #define _g_date_time_unref0(var) ((var == NULL) ? NULL : (var = (g_date_time_unref (var), NULL)))
-typedef struct _Block3Data Block3Data;
 
 struct _FocusApp {
 	GtkWindow parent_instance;
@@ -47,16 +46,12 @@ struct _Block2Data {
 	FocusApp* self;
 	GtkLabel* label;
 	GDateTime* now;
-	GtkButton* action;
-};
-
-struct _Block3Data {
-	int _ref_count_;
-	Block2Data * _data2_;
-	gboolean flag;
+	gboolean working;
 };
 
 
+extern GtkCssProvider* custom_css;
+GtkCssProvider* custom_css = NULL;
 static gpointer focus_app_parent_class = NULL;
 
 GType focus_app_get_type (void) G_GNUC_CONST;
@@ -73,12 +68,10 @@ static GtkListBoxRow* focus_app_addTask (FocusApp* self, const gchar* task, gboo
 static void ___lambda4__gtk_entry_activate (GtkEntry* _sender, gpointer self);
 static Block2Data* block2_data_ref (Block2Data* _data2_);
 static void block2_data_unref (void * _userdata_);
-static gboolean ___lambda5_ (Block2Data* _data2_);
-static Block3Data* block3_data_ref (Block3Data* _data3_);
-static void block3_data_unref (void * _userdata_);
-static void __lambda6_ (Block3Data* _data3_);
-static void ___lambda6__gtk_button_clicked (GtkButton* _sender, gpointer self);
-static gboolean ____lambda5__gsource_func (gpointer self);
+static void __lambda5_ (Block2Data* _data2_);
+static void ___lambda5__gtk_button_clicked (GtkButton* _sender, gpointer self);
+static gboolean __lambda6_ (Block2Data* _data2_);
+static gboolean ___lambda6__gsource_func (gpointer self);
 gint _vala_main (gchar** args, int args_length1);
 
 
@@ -141,8 +134,10 @@ FocusApp* focus_app_construct (GType object_type) {
 	GtkBox* _tmp1_ = NULL;
 	GtkLabel* label = NULL;
 	GtkLabel* _tmp2_ = NULL;
-	GtkEntry* _tmp3_ = NULL;
-	GtkListBox* _tmp4_ = NULL;
+	GtkStyleContext* _tmp3_ = NULL;
+	GtkStyleContext* _tmp4_ = NULL;
+	GtkEntry* _tmp5_ = NULL;
+	GtkListBox* _tmp6_ = NULL;
 	_data1_ = g_slice_new0 (Block1Data);
 	_data1_->_ref_count_ = 1;
 	self = (FocusApp*) g_object_new (object_type, NULL);
@@ -158,14 +153,17 @@ FocusApp* focus_app_construct (GType object_type) {
 	g_object_ref_sink (_tmp1_);
 	box = _tmp1_;
 	gtk_container_add ((GtkContainer*) self, (GtkWidget*) box);
-	_tmp2_ = (GtkLabel*) gtk_label_new ("<span size='17000'>Focus</span>");
+	_tmp2_ = (GtkLabel*) gtk_label_new ("Focus");
 	g_object_ref_sink (_tmp2_);
 	label = _tmp2_;
-	gtk_label_set_use_markup (label, TRUE);
+	_tmp3_ = gtk_widget_get_style_context ((GtkWidget*) label);
+	gtk_style_context_add_class (_tmp3_, "h1");
+	_tmp4_ = gtk_widget_get_style_context ((GtkWidget*) label);
+	gtk_style_context_add_class (_tmp4_, "b");
 	gtk_container_add ((GtkContainer*) box, (GtkWidget*) label);
-	_tmp3_ = (GtkEntry*) gtk_entry_new ();
-	g_object_ref_sink (_tmp3_);
-	_data1_->entry = _tmp3_;
+	_tmp5_ = (GtkEntry*) gtk_entry_new ();
+	g_object_ref_sink (_tmp5_);
+	_data1_->entry = _tmp5_;
 	gtk_entry_set_placeholder_text (_data1_->entry, "What are you doing?");
 	gtk_entry_set_icon_from_icon_name (_data1_->entry, GTK_ENTRY_ICON_SECONDARY, "media-playback-start");
 	gtk_widget_set_tooltip_text ((GtkWidget*) _data1_->entry, "Just Press Enter to insert!");
@@ -175,9 +173,9 @@ FocusApp* focus_app_construct (GType object_type) {
 	gtk_widget_set_margin_bottom ((GtkWidget*) _data1_->entry, 10);
 	gtk_buildable_set_name ((GtkBuildable*) _data1_->entry, "entry");
 	gtk_container_add ((GtkContainer*) box, (GtkWidget*) _data1_->entry);
-	_tmp4_ = (GtkListBox*) gtk_list_box_new ();
-	g_object_ref_sink (_tmp4_);
-	_data1_->listBox = _tmp4_;
+	_tmp6_ = (GtkListBox*) gtk_list_box_new ();
+	g_object_ref_sink (_tmp6_);
+	_data1_->listBox = _tmp6_;
 	g_signal_connect_data (_data1_->entry, "activate", (GCallback) ___lambda4__gtk_entry_activate, block1_data_ref (_data1_), (GClosureNotify) block1_data_unref, 0);
 	gtk_box_pack_start (box, (GtkWidget*) _data1_->listBox, TRUE, TRUE, (guint) 0);
 	_g_object_unref0 (label);
@@ -210,7 +208,6 @@ static void block2_data_unref (void * _userdata_) {
 	if (g_atomic_int_dec_and_test (&_data2_->_ref_count_)) {
 		FocusApp* self;
 		self = _data2_->self;
-		_g_object_unref0 (_data2_->action);
 		_g_date_time_unref0 (_data2_->now);
 		_g_object_unref0 (_data2_->label);
 		_g_object_unref0 (self);
@@ -219,196 +216,153 @@ static void block2_data_unref (void * _userdata_) {
 }
 
 
-static Block3Data* block3_data_ref (Block3Data* _data3_) {
-	g_atomic_int_inc (&_data3_->_ref_count_);
-	return _data3_;
-}
-
-
-static void block3_data_unref (void * _userdata_) {
-	Block3Data* _data3_;
-	_data3_ = (Block3Data*) _userdata_;
-	if (g_atomic_int_dec_and_test (&_data3_->_ref_count_)) {
-		FocusApp* self;
-		self = _data3_->_data2_->self;
-		block2_data_unref (_data3_->_data2_);
-		_data3_->_data2_ = NULL;
-		g_slice_free (Block3Data, _data3_);
-	}
-}
-
-
-static void __lambda6_ (Block3Data* _data3_) {
-	Block2Data* _data2_;
+static void __lambda5_ (Block2Data* _data2_) {
 	FocusApp* self;
-	_data2_ = _data3_->_data2_;
+	gboolean _tmp0_ = FALSE;
 	self = _data2_->self;
-	_data3_->flag = TRUE;
+	_tmp0_ = _data2_->working;
+	_data2_->working = !_tmp0_;
 }
 
 
-static void ___lambda6__gtk_button_clicked (GtkButton* _sender, gpointer self) {
-	__lambda6_ (self);
+static void ___lambda5__gtk_button_clicked (GtkButton* _sender, gpointer self) {
+	__lambda5_ (self);
 }
 
 
-static gboolean ___lambda5_ (Block2Data* _data2_) {
+static gboolean __lambda6_ (Block2Data* _data2_) {
 	FocusApp* self;
 	gboolean result = FALSE;
-	Block3Data* _data3_;
 	GDateTime* latest_time = NULL;
-	GDateTime* _tmp0_ = NULL;
+	gint _tmp0_ = 0;
 	gint _tmp1_ = 0;
-	GDateTime* _tmp2_ = NULL;
-	gint _tmp3_ = 0;
-	GDateTime* _tmp4_ = NULL;
-	gint _tmp5_ = 0;
-	GDateTime* _tmp6_ = NULL;
+	gint _tmp2_ = 0;
+	GDateTime* _tmp3_ = NULL;
 	GTimeSpan updated = 0LL;
-	GDateTime* _tmp7_ = NULL;
-	GDateTime* _tmp8_ = NULL;
-	GDateTime* _tmp9_ = NULL;
-	GTimeSpan _tmp10_ = 0LL;
-	GTimeSpan _tmp11_ = 0LL;
+	GDateTime* _tmp4_ = NULL;
+	GDateTime* _tmp5_ = NULL;
+	GTimeSpan _tmp6_ = 0LL;
+	GTimeSpan _tmp7_ = 0LL;
 	GDateTime* latest = NULL;
-	GDateTime* _tmp12_ = NULL;
-	GTimeSpan _tmp13_ = 0LL;
-	GDateTime* _tmp14_ = NULL;
-	GtkLabel* _tmp15_ = NULL;
-	GDateTime* _tmp16_ = NULL;
-	gchar* _tmp17_ = NULL;
-	gchar* _tmp18_ = NULL;
-	GtkButton* _tmp19_ = NULL;
-	gboolean _tmp20_ = FALSE;
+	GDateTime* _tmp8_ = NULL;
+	GTimeSpan _tmp9_ = 0LL;
+	GDateTime* _tmp10_ = NULL;
+	GDateTime* _tmp11_ = NULL;
+	gchar* _tmp12_ = NULL;
+	gchar* _tmp13_ = NULL;
+	gboolean _tmp14_ = FALSE;
 	self = _data2_->self;
-	_data3_ = g_slice_new0 (Block3Data);
-	_data3_->_ref_count_ = 1;
-	_data3_->_data2_ = block2_data_ref (_data2_);
-	_tmp0_ = _data2_->now;
-	_tmp1_ = g_date_time_get_year (_tmp0_);
-	_tmp2_ = _data2_->now;
-	_tmp3_ = g_date_time_get_month (_tmp2_);
-	_tmp4_ = _data2_->now;
-	_tmp5_ = g_date_time_get_day_of_month (_tmp4_);
-	_tmp6_ = g_date_time_new_local (_tmp1_, _tmp3_, _tmp5_, 0, 0, 0.0);
-	latest_time = _tmp6_;
-	_tmp7_ = g_date_time_new_now_local ();
-	_tmp8_ = _tmp7_;
-	_tmp9_ = _data2_->now;
-	_tmp10_ = g_date_time_difference (_tmp8_, _tmp9_);
-	_tmp11_ = _tmp10_;
-	_g_date_time_unref0 (_tmp8_);
-	updated = _tmp11_;
-	_tmp12_ = latest_time;
-	_tmp13_ = updated;
-	_tmp14_ = g_date_time_add (_tmp12_, _tmp13_);
-	latest = _tmp14_;
-	_tmp15_ = _data2_->label;
-	_tmp16_ = latest;
-	_tmp17_ = g_date_time_format (_tmp16_, "%T");
-	_tmp18_ = _tmp17_;
-	gtk_label_set_text (_tmp15_, _tmp18_);
-	_g_free0 (_tmp18_);
-	_data3_->flag = FALSE;
-	_tmp19_ = _data2_->action;
-	g_signal_connect_data (_tmp19_, "clicked", (GCallback) ___lambda6__gtk_button_clicked, block3_data_ref (_data3_), (GClosureNotify) block3_data_unref, 0);
-	_tmp20_ = _data3_->flag;
-	if (_tmp20_) {
-		result = FALSE;
-		_g_date_time_unref0 (latest);
-		_g_date_time_unref0 (latest_time);
-		block3_data_unref (_data3_);
-		_data3_ = NULL;
-		return result;
-	} else {
+	_tmp0_ = g_date_time_get_year (_data2_->now);
+	_tmp1_ = g_date_time_get_month (_data2_->now);
+	_tmp2_ = g_date_time_get_day_of_month (_data2_->now);
+	_tmp3_ = g_date_time_new_local (_tmp0_, _tmp1_, _tmp2_, 0, 0, 0.0);
+	latest_time = _tmp3_;
+	_tmp4_ = g_date_time_new_now_local ();
+	_tmp5_ = _tmp4_;
+	_tmp6_ = g_date_time_difference (_tmp5_, _data2_->now);
+	_tmp7_ = _tmp6_;
+	_g_date_time_unref0 (_tmp5_);
+	updated = _tmp7_;
+	_tmp8_ = latest_time;
+	_tmp9_ = updated;
+	_tmp10_ = g_date_time_add (_tmp8_, _tmp9_);
+	latest = _tmp10_;
+	_tmp11_ = latest;
+	_tmp12_ = g_date_time_format (_tmp11_, "%T");
+	_tmp13_ = _tmp12_;
+	gtk_label_set_text (_data2_->label, _tmp13_);
+	_g_free0 (_tmp13_);
+	_tmp14_ = _data2_->working;
+	if (_tmp14_ != FALSE) {
 		result = TRUE;
 		_g_date_time_unref0 (latest);
 		_g_date_time_unref0 (latest_time);
-		block3_data_unref (_data3_);
-		_data3_ = NULL;
+		return result;
+	} else {
+		result = FALSE;
+		_g_date_time_unref0 (latest);
+		_g_date_time_unref0 (latest_time);
 		return result;
 	}
 	_g_date_time_unref0 (latest);
 	_g_date_time_unref0 (latest_time);
-	block3_data_unref (_data3_);
-	_data3_ = NULL;
 }
 
 
-static gboolean ____lambda5__gsource_func (gpointer self) {
+static gboolean ___lambda6__gsource_func (gpointer self) {
 	gboolean result;
-	result = ___lambda5_ (self);
+	result = __lambda6_ (self);
 	return result;
 }
 
 
 static GtkListBoxRow* focus_app_addTask (FocusApp* self, const gchar* task, gboolean working) {
 	GtkListBoxRow* result = NULL;
+	Block2Data* _data2_;
+	gboolean _tmp0_ = FALSE;
 	GtkListBoxRow* row = NULL;
-	GtkListBoxRow* _tmp0_ = NULL;
+	GtkListBoxRow* _tmp1_ = NULL;
 	GtkBox* box = NULL;
-	GtkBox* _tmp1_ = NULL;
 	GtkBox* _tmp2_ = NULL;
+	GtkLabel* userTask = NULL;
 	const gchar* _tmp3_ = NULL;
-	GtkLabel* _tmp4_ = NULL;
-	GtkLabel* _tmp5_ = NULL;
-	gboolean _tmp6_ = FALSE;
-	GtkBox* _tmp14_ = NULL;
-	GtkListBoxRow* _tmp15_ = NULL;
-	GtkBox* _tmp16_ = NULL;
+	gchar* _tmp4_ = NULL;
+	gchar* _tmp5_ = NULL;
+	gchar* _tmp6_ = NULL;
+	gchar* _tmp7_ = NULL;
+	GtkLabel* _tmp8_ = NULL;
+	GtkLabel* _tmp9_ = NULL;
+	GtkLabel* _tmp10_ = NULL;
+	GDateTime* _tmp11_ = NULL;
+	GtkButton* action = NULL;
+	GtkButton* _tmp12_ = NULL;
 	g_return_val_if_fail (self != NULL, NULL);
 	g_return_val_if_fail (task != NULL, NULL);
-	_tmp0_ = (GtkListBoxRow*) gtk_list_box_row_new ();
-	g_object_ref_sink (_tmp0_);
-	row = _tmp0_;
-	_tmp1_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+	_data2_ = g_slice_new0 (Block2Data);
+	_data2_->_ref_count_ = 1;
+	_data2_->self = g_object_ref (self);
+	_tmp0_ = working;
+	_data2_->working = _tmp0_;
+	_tmp1_ = (GtkListBoxRow*) gtk_list_box_row_new ();
 	g_object_ref_sink (_tmp1_);
-	box = _tmp1_;
-	_tmp2_ = box;
+	row = _tmp1_;
+	_tmp2_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+	g_object_ref_sink (_tmp2_);
+	box = _tmp2_;
 	_tmp3_ = task;
-	_tmp4_ = (GtkLabel*) gtk_label_new (_tmp3_);
-	g_object_ref_sink (_tmp4_);
+	_tmp4_ = g_strconcat ("<b>", _tmp3_, NULL);
 	_tmp5_ = _tmp4_;
-	gtk_container_add ((GtkContainer*) _tmp2_, (GtkWidget*) _tmp5_);
-	_g_object_unref0 (_tmp5_);
-	_tmp6_ = working;
-	if (_tmp6_ != FALSE) {
-		Block2Data* _data2_;
-		GtkLabel* _tmp7_ = NULL;
-		GDateTime* _tmp8_ = NULL;
-		GtkButton* _tmp9_ = NULL;
-		GtkBox* _tmp10_ = NULL;
-		GtkLabel* _tmp11_ = NULL;
-		GtkBox* _tmp12_ = NULL;
-		GtkButton* _tmp13_ = NULL;
-		_data2_ = g_slice_new0 (Block2Data);
-		_data2_->_ref_count_ = 1;
-		_data2_->self = g_object_ref (self);
-		_tmp7_ = (GtkLabel*) gtk_label_new ("");
-		g_object_ref_sink (_tmp7_);
-		_data2_->label = _tmp7_;
-		_tmp8_ = g_date_time_new_now_local ();
-		_data2_->now = _tmp8_;
-		_tmp9_ = (GtkButton*) gtk_button_new_from_icon_name ("media-playback-pause", GTK_ICON_SIZE_BUTTON);
-		g_object_ref_sink (_tmp9_);
-		_data2_->action = _tmp9_;
-		g_timeout_add_full (G_PRIORITY_DEFAULT, (guint) 500, ____lambda5__gsource_func, block2_data_ref (_data2_), block2_data_unref);
-		_tmp10_ = box;
-		_tmp11_ = _data2_->label;
-		gtk_box_pack_start (_tmp10_, (GtkWidget*) _tmp11_, TRUE, TRUE, (guint) 0);
-		_tmp12_ = box;
-		_tmp13_ = _data2_->action;
-		gtk_box_pack_end (_tmp12_, (GtkWidget*) _tmp13_, TRUE, TRUE, (guint) 0);
-		block2_data_unref (_data2_);
-		_data2_ = NULL;
-	}
-	_tmp14_ = box;
-	gtk_box_set_homogeneous (_tmp14_, TRUE);
-	_tmp15_ = row;
-	_tmp16_ = box;
-	gtk_container_add ((GtkContainer*) _tmp15_, (GtkWidget*) _tmp16_);
+	_tmp6_ = g_strconcat (_tmp5_, "</b>", NULL);
+	_tmp7_ = _tmp6_;
+	_tmp8_ = (GtkLabel*) gtk_label_new (_tmp7_);
+	g_object_ref_sink (_tmp8_);
+	_tmp9_ = _tmp8_;
+	_g_free0 (_tmp7_);
+	_g_free0 (_tmp5_);
+	userTask = _tmp9_;
+	gtk_label_set_use_markup (userTask, TRUE);
+	gtk_container_add ((GtkContainer*) box, (GtkWidget*) userTask);
+	_tmp10_ = (GtkLabel*) gtk_label_new ("");
+	g_object_ref_sink (_tmp10_);
+	_data2_->label = _tmp10_;
+	_tmp11_ = g_date_time_new_now_local ();
+	_data2_->now = _tmp11_;
+	_tmp12_ = (GtkButton*) gtk_button_new_from_icon_name ("media-playback-pause", GTK_ICON_SIZE_BUTTON);
+	g_object_ref_sink (_tmp12_);
+	action = _tmp12_;
+	g_signal_connect_data (action, "clicked", (GCallback) ___lambda5__gtk_button_clicked, block2_data_ref (_data2_), (GClosureNotify) block2_data_unref, 0);
+	g_timeout_add_full (G_PRIORITY_DEFAULT, (guint) 500, ___lambda6__gsource_func, block2_data_ref (_data2_), block2_data_unref);
+	gtk_box_pack_end (box, (GtkWidget*) action, TRUE, TRUE, (guint) 0);
+	gtk_box_pack_start (box, (GtkWidget*) _data2_->label, TRUE, TRUE, (guint) 0);
+	gtk_box_set_homogeneous (box, TRUE);
+	gtk_container_add ((GtkContainer*) row, (GtkWidget*) box);
+	gtk_widget_set_margin_bottom ((GtkWidget*) row, 10);
 	result = row;
+	_g_object_unref0 (action);
+	_g_object_unref0 (userTask);
 	_g_object_unref0 (box);
+	block2_data_unref (_data2_);
+	_data2_ = NULL;
 	return result;
 }
 
