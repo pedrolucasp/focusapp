@@ -2,9 +2,9 @@
 ### Do not edit
 
 set (DATADIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATAROOTDIR}")
-set (PKGDATADIR "${DATADIR}/focus")
-set (GETTEXT_PACKAGE "focus")
-set (RELEASE_NAME "focus")
+set (PKGDATADIR "${DATADIR}/focusapp")
+set (GETTEXT_PACKAGE "focusapp")
+set (RELEASE_NAME "focusapp")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (VERSION "1.0.0")
@@ -34,26 +34,25 @@ set (VALA_PACKAGES ${VALA_PACKAGES} pango)
 set (VALA_PACKAGES ${VALA_PACKAGES} x11)
 
 set (APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/Config.vala)
-set (APP_SOURCES ${APP_SOURCES} Focus.vala)
-set (APP_SOURCES ${APP_SOURCES} TaskManager.vala)
+set (APP_SOURCES ${APP_SOURCES} focusapp.vala)
 
-vala_precompile(VALA_C focus
+vala_precompile(VALA_C focusapp
 	${APP_SOURCES}
 PACKAGES
 	${VALA_PACKAGES}
 )
 
-add_executable(focus ${VALA_C})
+add_executable(focusapp ${VALA_C})
 
 install(TARGETS
-	focus
+	focusapp
 RUNTIME DESTINATION
 	${CMAKE_INSTALL_BINDIR}/
 )
 
 if(HAVE_VALADOC)
-	valadoc(focus
-		${CMAKE_BINARY_DIR}/valadoc/focus
+	valadoc(focusapp
+		${CMAKE_BINARY_DIR}/valadoc/focusapp
 		${APP_SOURCES}
 	PACKAGES
 		${VALA_PACKAGES}
@@ -63,6 +62,6 @@ if(HAVE_VALADOC)
 	install(DIRECTORY
 		${CMAKE_BINARY_DIR}/valadoc
 	DESTINATION
-		${CMAKE_INSTALL_DATAROOTDIR}/doc/focus
+		${CMAKE_INSTALL_DATAROOTDIR}/doc/focusapp
 	)
 endif()

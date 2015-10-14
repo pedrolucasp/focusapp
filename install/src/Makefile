@@ -79,6 +79,16 @@ install/local: preinstall
 install/local/fast: install/local
 .PHONY : install/local/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+.PHONY : install/strip/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -140,30 +150,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/focus.dir/rule:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/focus.dir/rule
-.PHONY : src/CMakeFiles/focus.dir/rule
+src/CMakeFiles/focusapp.dir/rule:
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/focusapp.dir/rule
+.PHONY : src/CMakeFiles/focusapp.dir/rule
 
 # Convenience name for target.
-focus: src/CMakeFiles/focus.dir/rule
-.PHONY : focus
+focusapp: src/CMakeFiles/focusapp.dir/rule
+.PHONY : focusapp
 
 # fast build rule for target.
-focus/fast:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/build
-.PHONY : focus/fast
-
-# Manual pre-install relink rule for target.
-focus/preinstall:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/focus.dir/preinstall
-.PHONY : focus/preinstall
+focusapp/fast:
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/build
+.PHONY : focusapp/fast
 
 Config.o: Config.c.o
 .PHONY : Config.o
 
 # target to build an object file
 Config.c.o:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.o
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/Config.c.o
 .PHONY : Config.c.o
 
 Config.i: Config.c.i
@@ -171,7 +176,7 @@ Config.i: Config.c.i
 
 # target to preprocess a source file
 Config.c.i:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.i
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/Config.c.i
 .PHONY : Config.c.i
 
 Config.s: Config.c.s
@@ -179,56 +184,32 @@ Config.s: Config.c.s
 
 # target to generate assembly for a file
 Config.c.s:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Config.c.s
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/Config.c.s
 .PHONY : Config.c.s
 
-Focus.o: Focus.c.o
-.PHONY : Focus.o
+focusapp.o: focusapp.c.o
+.PHONY : focusapp.o
 
 # target to build an object file
-Focus.c.o:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.o
-.PHONY : Focus.c.o
+focusapp.c.o:
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/focusapp.c.o
+.PHONY : focusapp.c.o
 
-Focus.i: Focus.c.i
-.PHONY : Focus.i
-
-# target to preprocess a source file
-Focus.c.i:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.i
-.PHONY : Focus.c.i
-
-Focus.s: Focus.c.s
-.PHONY : Focus.s
-
-# target to generate assembly for a file
-Focus.c.s:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/Focus.c.s
-.PHONY : Focus.c.s
-
-TaskManager.o: TaskManager.c.o
-.PHONY : TaskManager.o
-
-# target to build an object file
-TaskManager.c.o:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/TaskManager.c.o
-.PHONY : TaskManager.c.o
-
-TaskManager.i: TaskManager.c.i
-.PHONY : TaskManager.i
+focusapp.i: focusapp.c.i
+.PHONY : focusapp.i
 
 # target to preprocess a source file
-TaskManager.c.i:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/TaskManager.c.i
-.PHONY : TaskManager.c.i
+focusapp.c.i:
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/focusapp.c.i
+.PHONY : focusapp.c.i
 
-TaskManager.s: TaskManager.c.s
-.PHONY : TaskManager.s
+focusapp.s: focusapp.c.s
+.PHONY : focusapp.s
 
 # target to generate assembly for a file
-TaskManager.c.s:
-	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/TaskManager.c.s
-.PHONY : TaskManager.c.s
+focusapp.c.s:
+	cd /home/pedrolucasp/Documentos/Projetos/elementary/focus/install && $(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/focusapp.c.s
+.PHONY : focusapp.c.s
 
 # Help Target
 help:
@@ -237,21 +218,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... focus"
+	@echo "... focusapp"
 	@echo "... install"
 	@echo "... install/local"
+	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... Config.o"
 	@echo "... Config.i"
 	@echo "... Config.s"
-	@echo "... Focus.o"
-	@echo "... Focus.i"
-	@echo "... Focus.s"
-	@echo "... TaskManager.o"
-	@echo "... TaskManager.i"
-	@echo "... TaskManager.s"
+	@echo "... focusapp.o"
+	@echo "... focusapp.i"
+	@echo "... focusapp.s"
 .PHONY : help
 
 

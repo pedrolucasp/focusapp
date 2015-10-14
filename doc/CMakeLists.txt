@@ -7,13 +7,13 @@ foreach(file_data ${list_data})
 		install(DIRECTORY
 			${file_data}
 		DESTINATION
-			${CMAKE_INSTALL_DATAROOTDIR}/doc/focus
+			${CMAKE_INSTALL_DATAROOTDIR}/doc/focusapp
 		)
 	ELSE()
 		install(FILES
 			${file_data}
 		DESTINATION
-			${CMAKE_INSTALL_DATAROOTDIR}/doc/focus
+			${CMAKE_INSTALL_DATAROOTDIR}/doc/focusapp
 		)
 	ENDIF()
 endforeach()

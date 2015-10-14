@@ -79,6 +79,16 @@ install/local: preinstall
 install/local/fast: install/local
 .PHONY : install/local/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+.PHONY : install/strip/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -140,22 +150,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named focus
+# Target rules for targets named focusapp
 
 # Build rule for target.
-focus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 focus
-.PHONY : focus
+focusapp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 focusapp
+.PHONY : focusapp
 
 # fast build rule for target.
-focus/fast:
-	$(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/build
-.PHONY : focus/fast
-
-# Manual pre-install relink rule for target.
-focus/preinstall:
-	$(MAKE) -f src/CMakeFiles/focus.dir/build.make src/CMakeFiles/focus.dir/preinstall
-.PHONY : focus/preinstall
+focusapp/fast:
+	$(MAKE) -f src/CMakeFiles/focusapp.dir/build.make src/CMakeFiles/focusapp.dir/build
+.PHONY : focusapp/fast
 
 #=============================================================================
 # Target rules for targets named i18n
@@ -192,10 +197,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... install/local"
+	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... focus"
+	@echo "... focusapp"
 	@echo "... i18n"
 	@echo "... pot"
 .PHONY : help

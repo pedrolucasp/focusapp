@@ -1,0 +1,12 @@
+Source: focusapp
+Maintainer: Pedro Lucas Porcellis <pedrolucasporcellis@gmail.com>
+Priority: optional
+Section: misc
+Build-Depends: build-essential, po-debconf, valac-0.28, libatk1.0-dev, libcairo2-dev, libgtk-3-dev, libgdk-pixbuf2.0-dev, libglib2.0-dev, libpango1.0-dev, libx11-dev, cmake, gettext, pkg-config, gcc, g++, make, intltool
+
+Package: focusapp
+Architecture: any
+Version: 1.0.0
+Depends: libatk1.0-0, libglib2.0-0, libcairo2, libgtk-3-0, libpangocairo-1.0-0, libgdk-pixbuf2.0-0, libcairo-gobject2, libpango-1.0-0, libx11-6
+Description: Not available
+ .

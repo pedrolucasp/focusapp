@@ -1,0 +1,3 @@
+/home/pedrolucasp/Documentos/Projetos/elementary/focus/build_dir/src/CMakeFiles/focusapp.dir
+/home/pedrolucasp/Documentos/Projetos/elementary/focus/build_dir/po/CMakeFiles/i18n.dir
+/home/pedrolucasp/Documentos/Projetos/elementary/focus/build_dir/po/CMakeFiles/pot.dir

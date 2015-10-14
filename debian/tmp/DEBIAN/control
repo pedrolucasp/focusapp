@@ -1,0 +1,9 @@
+Package: focusapp
+Version: 1.0.0-elementaryOS1
+Architecture: amd64
+Maintainer: Pedro Lucas Porcellis <pedrolucasporcellis@gmail.com>
+Installed-Size: 41
+Depends: libglib2.0-0
+Section: misc
+Priority: optional
+Description: Not available
