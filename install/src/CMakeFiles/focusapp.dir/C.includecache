@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/Config.c
-glib.h
--
-glib-object.h
--
-stdlib.h
--
-string.h
--
-
 /home/pedrolucasp/Documentos/Projetos/elementary/focus/install/src/focusapp.c
 glib.h
 -

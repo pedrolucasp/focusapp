@@ -153,7 +153,7 @@ FocusApp* focus_app_construct (GType object_type) {
 	g_object_ref_sink (_tmp1_);
 	box = _tmp1_;
 	gtk_container_add ((GtkContainer*) self, (GtkWidget*) box);
-	_tmp2_ = (GtkLabel*) gtk_label_new ("Focus");
+	_tmp2_ = (GtkLabel*) gtk_label_new ("Focus App");
 	g_object_ref_sink (_tmp2_);
 	label = _tmp2_;
 	_tmp3_ = gtk_widget_get_style_context ((GtkWidget*) label);
@@ -222,6 +222,7 @@ static void __lambda5_ (Block2Data* _data2_) {
 	self = _data2_->self;
 	_tmp0_ = _data2_->working;
 	_data2_->working = !_tmp0_;
+	g_print ("I was clicked");
 }
 
 

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Icon=focusapp_128x128.png
+Type=Application
+Exec=focusapp
+Hidden=false
+NoDisplay=false
+Name=Focus App
+Comment=Simple Time Tracking Application
+Categories=GTK;GNOME;Utility;

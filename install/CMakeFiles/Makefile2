@@ -185,6 +185,36 @@ clean: po/CMakeFiles/pot.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory data
+
+# Convenience name for "all" pass in the directory.
+data/all:
+.PHONY : data/all
+
+# Convenience name for "clean" pass in the directory.
+data/clean:
+.PHONY : data/clean
+
+# Convenience name for "preinstall" pass in the directory.
+data/preinstall:
+.PHONY : data/preinstall
+
+#=============================================================================
+# Directory level rules for directory data/icons
+
+# Convenience name for "all" pass in the directory.
+data/icons/all:
+.PHONY : data/icons/all
+
+# Convenience name for "clean" pass in the directory.
+data/icons/clean:
+.PHONY : data/icons/clean
+
+# Convenience name for "preinstall" pass in the directory.
+data/icons/preinstall:
+.PHONY : data/icons/preinstall
+
+#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.

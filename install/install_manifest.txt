@@ -1,1 +1,6 @@
 /usr/local/bin/focusapp
+/usr/local/share/applications/focusapp.desktop
+/usr/local/share/icons/hicolor/128x128/apps/focusapp_128x128.png
+/usr/local/share/icons/hicolor/32x32/apps/focusapp_32x32.png
+/usr/local/share/icons/hicolor/512x512/apps/focusapp_512x512.png
+/usr/local/share/icons/hicolor/64x64/apps/focusapp_64x64.png
